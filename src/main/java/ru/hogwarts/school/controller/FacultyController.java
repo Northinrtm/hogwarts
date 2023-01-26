@@ -21,8 +21,8 @@ public class FacultyController {
     }
 
     @PostMapping
-    public Faculty createFaculty(@RequestBody Faculty faculty) {
-        return facultyService.createFaculty(faculty);
+    public ResponseEntity<Faculty> createFaculty(@RequestBody Faculty faculty) {
+        return ResponseEntity.ok(facultyService.createFaculty(faculty));
     }
 
     @GetMapping("{id}")
@@ -49,7 +49,12 @@ public class FacultyController {
     }
 
     @GetMapping("/bycolor/{color}")
-    public Collection<Faculty> getFacultiesByColor(@PathVariable("color") String color) {
-        return facultyService.getFacultiesByColor(color);
+    public ResponseEntity<Collection<Faculty>> getFacultiesByColor(@PathVariable("color") String color) {
+        return ResponseEntity.ok(facultyService.getFacultiesByColor(color));
+    }
+
+    @GetMapping("/bynameorcolor")
+    public ResponseEntity<Collection<Faculty>> getFacultiesByNameOrColor(@RequestParam String nameOrColor){
+        return ResponseEntity.ok(facultyService.getFacultiesByNameOrColor(nameOrColor));
     }
 }
