@@ -3,6 +3,7 @@ package ru.hogwarts.school.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
 import ru.hogwarts.school.service.StudentService;
@@ -13,12 +14,9 @@ import java.util.Collection;
 @RequestMapping("student")
 public class StudentController {
     private final StudentService studentService;
-    private final StudentRepository studentRepository;
 
-    public StudentController(StudentService studentService,
-                             StudentRepository studentRepository) {
+    public StudentController(StudentService studentService) {
         this.studentService = studentService;
-        this.studentRepository = studentRepository;
     }
 
     @PostMapping
@@ -59,5 +57,10 @@ public class StudentController {
             @RequestParam int min,
             @RequestParam int max) {
         return ResponseEntity.ok(studentService.getStudentsByAgeBetween(min, max));
+    }
+
+    @GetMapping("/getbyfaculty")
+    public ResponseEntity<Collection<Student>> getByFaculty(@RequestParam Long id){
+        return ResponseEntity.ok(studentService.getStudentsByFacultyId(id));
     }
 }

@@ -33,4 +33,8 @@ public class Faculty {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public long getId() {
+        return id;
+    }
 }
