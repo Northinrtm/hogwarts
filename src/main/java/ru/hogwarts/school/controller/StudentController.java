@@ -8,6 +8,7 @@ import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
 import ru.hogwarts.school.service.StudentService;
 
+import javax.websocket.server.PathParam;
 import java.util.Collection;
 
 @RestController
@@ -59,8 +60,8 @@ public class StudentController {
         return ResponseEntity.ok(studentService.getStudentsByAgeBetween(min, max));
     }
 
-    @GetMapping("/getbyfaculty")
-    public ResponseEntity<Collection<Student>> getByFaculty(@RequestParam Long id){
-        return ResponseEntity.ok(studentService.getStudentsByFacultyId(id));
+    @GetMapping("/faculty")
+    public ResponseEntity<Faculty> getFaculty(@RequestParam Long studentId){
+        return ResponseEntity.ok(studentService.findStudent(studentId).getFaculty());
     }
 }

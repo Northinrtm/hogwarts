@@ -37,4 +37,8 @@ public class Faculty {
     public long getId() {
         return id;
     }
+
+    public Set<Student> getStudentSet() {
+        return studentSet;
+    }
 }

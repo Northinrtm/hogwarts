@@ -39,5 +39,4 @@ public class FacultyService {
     public Collection<Faculty> getFacultiesByNameOrColor(String nameOrColor) {
         return facultyRepository.findByNameLikeIgnoreCaseOrColorLikeIgnoreCase(nameOrColor, nameOrColor);
     }
-
 }
