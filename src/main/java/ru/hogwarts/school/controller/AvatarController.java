@@ -29,7 +29,6 @@ public class AvatarController {
     public ResponseEntity<String> uploadAvatar(@PathVariable Long id, @RequestParam MultipartFile avatar) throws IOException {
         avatarService.uploadAvatar(id, avatar);
         return ResponseEntity.ok().build();
-
     }
 
     @GetMapping("/{id}/preview")
