@@ -106,7 +106,7 @@ class FacultyControllerTest {
         when(facultyRepository.findByColorLike(color1)).thenReturn(List.of(faculty1));
 
         mockMvc.perform(MockMvcRequestBuilders
-                .get("faculty/bycolor/{color)", color1)
+                .get("/faculty/bycolor/{color}", color1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
