@@ -10,6 +10,13 @@ import java.util.Set;
 
 @Entity
 public class Faculty {
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setStudentSet(Set<Student> studentSet) {
+        this.studentSet = studentSet;
+    }
 
     @Id
     @GeneratedValue
