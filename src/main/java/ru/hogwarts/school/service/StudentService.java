@@ -7,6 +7,8 @@ import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -62,5 +64,13 @@ public class StudentService {
     public Collection<Student> last5() {
         logger.info("Was invoked method for find last 5 students");
         return studentRepository.last5();
+    }
+
+    public List<String> listNamesOfStudentsStartsWithA() {
+        return studentRepository.findAll()
+                .stream()
+                .filter(s -> s.getName().toUpperCase().startsWith("A"))
+                .map(s -> s.getName())
+                .collect(Collectors.toList());
     }
 }

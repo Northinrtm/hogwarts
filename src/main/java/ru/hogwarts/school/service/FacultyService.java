@@ -48,4 +48,12 @@ public class FacultyService {
         logger.info("Was invoked method for find faculties by name or color");
         return facultyRepository.findByNameLikeIgnoreCaseOrColorLikeIgnoreCase(nameOrColor, nameOrColor);
     }
+
+    public String longestName() {
+        return facultyRepository.findAll().stream()
+                .map(s -> s.getName())
+                .sorted((str1, str2) -> str2.length() - str1.length())
+                .findFirst()
+                .get();
+    }
 }

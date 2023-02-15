@@ -1,5 +1,6 @@
 package ru.hogwarts.school.controller;
 
+import liquibase.pro.packaged.S;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import ru.hogwarts.school.service.StudentService;
 
 import javax.websocket.server.PathParam;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("student")
@@ -78,5 +80,10 @@ public class StudentController {
     @GetMapping("/limit5")
     public ResponseEntity<Collection<Student>> last5() {
         return ResponseEntity.ok(studentService.last5());
+    }
+
+    @GetMapping("/namesa")
+    public ResponseEntity<List<String>> listNamesOfStudentsStartsWithA() {
+        return ResponseEntity.ok(studentService.listNamesOfStudentsStartsWithA());
     }
 }
