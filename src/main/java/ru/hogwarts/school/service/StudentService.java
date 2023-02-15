@@ -69,8 +69,9 @@ public class StudentService {
     public List<String> listNamesOfStudentsStartsWithA() {
         return studentRepository.findAll()
                 .stream()
-                .filter(s -> s.getName().toUpperCase().startsWith("A"))
-                .map(s -> s.getName())
+                .map(s -> s.getName().toUpperCase())
+                .filter(s -> s.startsWith("A"))
+                .sorted()
                 .collect(Collectors.toList());
     }
 }
