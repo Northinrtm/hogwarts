@@ -26,7 +26,7 @@ import static java.nio.file.StandardOpenOption.CREATE_NEW;
 @Transactional
 public class AvatarService {
 
-    Logger logger = LoggerFactory.getLogger(AvatarService.class);
+    private static final Logger logger = LoggerFactory.getLogger(AvatarService.class);
 
     private final AvatarRepository avatarRepository;
     private final StudentRepository studentRepository;
@@ -91,7 +91,7 @@ public class AvatarService {
         return fileName.substring(fileName.lastIndexOf(".") + 1);
     }
 
-    public Collection<Avatar> avatars(Integer pageNumber, Integer pageSize){
+    public Collection<Avatar> avatars(Integer pageNumber, Integer pageSize) {
         logger.info("Was invoked method for get avatars");
         PageRequest pageRequest = PageRequest.of(pageNumber - 1, pageSize);
         return avatarRepository.findAll(pageRequest).getContent();

@@ -86,4 +86,14 @@ public class StudentController {
     public ResponseEntity<List<String>> listNamesOfStudentsStartsWithA() {
         return ResponseEntity.ok(studentService.listNamesOfStudentsStartsWithA());
     }
+
+    @GetMapping("/print")
+    public void printNames() {
+        studentService.printNames();
+    }
+
+    @GetMapping("/print2")
+    public void print2() {
+        studentService.print2();
+    }
 }

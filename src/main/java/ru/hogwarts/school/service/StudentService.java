@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class StudentService {
 
-    Logger logger = LoggerFactory.getLogger(StudentService.class);
+    private static final Logger logger = LoggerFactory.getLogger(StudentService.class);
 
     private final StudentRepository studentRepository;
 
@@ -73,5 +73,47 @@ public class StudentService {
                 .filter(s -> s.startsWith("A"))
                 .sorted()
                 .collect(Collectors.toList());
+    }
+
+    public void printNames() {
+        List<Student> studentList = studentRepository.findAll();
+        String name0 = studentList.get(0).getName();
+        String name1 = studentList.get(1).getName();
+        String name2 = studentList.get(2).getName();
+        String name3 = studentList.get(3).getName();
+        String name4 = studentList.get(4).getName();
+        String name5 = studentList.get(5).getName();
+
+        System.out.println("0: " + name0);
+        System.out.println("1: " + name1);
+
+        new Thread(() -> {
+            System.out.println("2: " + name2);
+            System.out.println("3: " + name3);
+        }).start();
+
+        new Thread(() -> {
+            System.out.println("4: " + name4);
+            System.out.println("5: " + name5);
+        }).start();
+    }
+
+    public void print2() {
+        printName(0);
+        printName(1);
+
+        new Thread(() -> {
+            printName(2);
+            printName(3);
+        }).start();
+
+        new Thread(() -> {
+            printName(4);
+            printName(5);
+        }).start();
+    }
+
+    public void printName(int i) {
+        System.out.println(i + ": " + studentRepository.findAll().get(i).getName());
     }
 }
