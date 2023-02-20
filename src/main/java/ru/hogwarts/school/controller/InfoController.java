@@ -19,6 +19,6 @@ public class InfoController {
 
     @GetMapping("/int")
     public int intSum() {
-        return 1_000_000 * ((1_000_000 + 1) / 2);
+        return 1_000_000 * (1_000_001 / 2);
     }
 }
