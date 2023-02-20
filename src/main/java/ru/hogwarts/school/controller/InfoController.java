@@ -19,6 +19,6 @@ public class InfoController {
 
     @GetMapping("/int")
     public int intSum() {
-        return Stream.iterate(1, a -> a + 1).limit(1_000_000).reduce(0, (a, b) -> a + b);
+        return 1_000_000 * ((1_000_000 + 1) / 2);
     }
 }
